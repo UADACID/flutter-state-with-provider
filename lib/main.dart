@@ -22,41 +22,44 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final customState = Provider.of<MyCustomState>(context);
+    // jika menggunakan ini akan membuat fungsi rebuild terpanggil terus menerus ketika perubahan state, jadi saya komen
+    // final customState = Provider.of<MyCustomState>(context);
     print('rebuild');
     return Scaffold(
       appBar: AppBar(
         title: Text('widget.title'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '${customState._counter}',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                IconButton(
-                  onPressed: () {
-                    customState.increment();
-                  },
-                  icon: Icon(Icons.add),
-                ),
-                IconButton(
-                  onPressed: () {
-                    customState.decrement();
-                  },
-                  icon: Icon(Icons.remove),
-                ),
-              ],
-            )
-          ],
+        child: Consumer<MyCustomState>(
+          builder: (BuildContext context, value, Widget child) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'You have pushed the button this many times:',
+                  ),
+                  Text(
+                    '${value._counter}',
+                    style: Theme.of(context).textTheme.display1,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      IconButton(
+                        onPressed: () {
+                          value.increment();
+                        },
+                        icon: Icon(Icons.add),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          value.decrement();
+                        },
+                        icon: Icon(Icons.remove),
+                      ),
+                    ],
+                  )
+                ],
+              ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
