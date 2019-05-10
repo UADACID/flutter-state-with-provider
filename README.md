@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+![](https://github.com/UADACID/flutter-state-with-provider/blob/master/example.gif)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
