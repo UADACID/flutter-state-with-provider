@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // jika menggunakan ini akan membuat fungsi rebuild terpanggil terus menerus ketika perubahan state, jadi saya komen
+    // jika menggunakan ini akan membuat fungsi build terpanggil terus menerus ketika perubahan state, jadi saya komen
     // final customState = Provider.of<MyCustomState>(context);
     print('rebuild');
     return Scaffold(
